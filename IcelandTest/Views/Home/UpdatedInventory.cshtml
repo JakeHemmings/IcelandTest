@@ -1,0 +1,43 @@
+﻿@model Iceland.Models.Items
+@{
+    ViewBag.Title = "Updated Inventory";
+}
+
+<div class="row" style="margin-bottom:20px; background-color:gainsboro; height:50px;">
+    <div class="form-inline col-12">
+        <label style="font-size:19px;"><strong>Inventory Management System</strong></label>
+        <label style="font-size:14px; margin-left:10px;">Updated @string.Format("{0:dddd dd MMMM yyyy HH:mm}", ViewBag.TimeNow)</label>
+    </div>
+</div>
+
+<hr />
+
+@using (Html.BeginForm("UpdatedInventory", "Home"))
+{
+    for (int i = 0; i < Model.InventoryItems.Count(); i++)
+    {
+        <div class="row" style="margin-bottom:5px;">
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => modelItem.InventoryItems[i].ItemName)
+            </div>
+
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => modelItem.InventoryItems[i].SellIn)
+            </div>
+
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => modelItem.InventoryItems[i].Quality)
+            </div>
+        </div>
+    }
+
+    <hr />
+
+    <div class="row" style="background-color:gainsboro; height:50px;">
+        <div class="form-inline col-4">
+            <a href="~/Home/Index" class="btn btn-success btn-sm">
+                <i class="fa fa-backward"></i>&nbsp;Add New Values
+            </a>
+        </div>
+    </div>
+}
